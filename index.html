@@ -21,7 +21,9 @@
         })(window.location.search.substr(1).split('&'));
         $(function ($) {
             var $content = $('#content');
+            var $title = $('title');
             if ($.QueryString.val){
+                debugger
                 $content.html($.QueryString.val)
             }
 
@@ -45,8 +47,11 @@
             }
             $content.on('keyup', function (e) {
                 var content = $content.html()
+                var childNode = $content[0].childNodes[0];
+                if (childNode && childNode.textContent)
+                    $title.text( childNode.textContent)
                 if (history)
-                    history.pushState({}, "page 2", "?val="+encodeURI(content));
+                    history.pushState({}, "page 2", "?val="+encodeURIComponent(content));
 
             })
             $content.on('keydown', function (e) {
