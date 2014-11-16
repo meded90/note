@@ -68,7 +68,7 @@ $(function ($) {
             var val = ''
             try {
                 var x = text.substring(indexStart, pos);
-                val = val.replace(',','.');
+                x = x.replace(',','.');
                 val = eval(x)
                 console.log(val);
 
